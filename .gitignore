@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Documentación
+Lab4Src/
+Documentos/Laboratio_4_C34789.adoc
