@@ -3,18 +3,36 @@ using backend_lab_C34789.Repositories;
 
 namespace backend_lab_C34789.Services
 {
-    public class CountryService
+  public class CountryService
+  {
+    private readonly CountryRepository countryRepository;
+    public CountryService()
     {
-        private readonly CountryRepository countryRepository;
-        public CountryService()
-        {
-            countryRepository = new CountryRepository();
-        }
-
-        public List<CountryModel> GetCountries()
-        {
-            // Add any missing business logic when it is neccesary
-            return countryRepository.GetCountries();
-        }
+      countryRepository = new CountryRepository();
     }
+
+    public List<CountryModel> GetCountries()
+    {
+      // Add any missing business logic when it is neccesary
+      return countryRepository.GetCountries();
+    }
+
+    public string CreateCountry(CountryModel country)
+    {
+      var result = string.Empty;
+      try
+      {
+        var isCreated = countryRepository.CreateCountry(country);
+        if (!isCreated)
+        {
+          result = "Error al crear el país";
+        }
+      } catch (Exception)
+      {
+        result = "Error creando país";
+      }
+
+      return result;
+    }
+  }
 }
